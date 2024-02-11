@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <title>Profit</title>
+        <script>
+            window.onload = () => {
+            const DB = new Date('2024-02-11T16:45:54.998Z');
+            const Minernumber = 46;
+            setInterval(() => {
+                var DN = new Date()
+                var differencenow = (DN - DB)/1000;
+                var BTCnow = ((0.000000000125*Minernumber)*differencenow);
+                var EURnow = (44800)*BTCnow;
+                document.getElementById("now").innerHTML = String(BTCnow) +" BTC"
+                document.getElementById("nowEUR").innerHTML = String(EURnow.toLocaleString()) + " EUR"
+                if((EURnow / Minernumber) > 8 ){
+                    document.getElementById("withdraw").style.color = "green"
+                    document.getElementById("withdraw").innerHTML = "withdrawable"
+                }else{
+                    document.getElementById("withdraw").style.color = "red"
+                    document.getElementById("withdraw").innerHTML = "no withdrawable"
+                }
+            },1000)
+            document.getElementById("thxrate").innerHTML = String(Minernumber*0.9) + "TH/S"
+        }
+        </script>
+        <style>
+            body{
+                background-color: black;
+            }
+            h1{
+                font-size: 125px;
+                color: greenyellow;
+                text-align: center;
+                position: static;
+            }
+            h2{
+                font-size: 125px;
+                text-align: center;
+                position: static;
+            }
+            h3{
+                font-size: 100px;
+                color: yellow;
+                text-align: center;
+                position: static;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+        <h1 id="now"></h1>
+        <h1 id="nowEUR"></h1>
+        <h2 id="withdraw"></h2>
+        <h3 id="thxrate"></h2>
+    </div>
+    </body>
+</html>
